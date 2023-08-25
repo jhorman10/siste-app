@@ -1,1 +1,9 @@
-<p>client works!</p>
+<section class="clients__container">
+  <ng-container *ngIf="(isLoading$ | async); else content">
+    <app-spinner></app-spinner>
+  </ng-container>
+  <ng-template #content>
+    <h1 class="clients__container__title">Client List:</h1>
+    <app-client-list></app-client-list>
+  </ng-template>
+</section>
