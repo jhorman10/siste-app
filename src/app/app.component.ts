@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'siste-app';
-  isLoading: boolean = true; // Cambia esto según tu lógica de carga de datos
+  isLoading: boolean = true;
 
   // Simula una carga de datos
   ngOnInit() {
