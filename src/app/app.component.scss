@@ -1,8 +1,7 @@
-/* Estilos generales para toda la aplicación */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  overflow: hidden; /* Evita el desplazamiento vertical por defecto */
+  overflow: hidden;
 }
 
 .app__container {
@@ -14,13 +13,8 @@ body {
 .content {
   display: flex;
   height: calc(100vh - 70px - 48px);
-  flex-direction: row;
+  flex-direction: column; /* Cambiado a columna en dispositivos móviles */
   overflow: hidden;
-
-  // Modificadores (si los hubiera)
-  //&--sidebar-open {
-    // Estilos cuando la barra lateral está abierta
-  //}
 }
 
 .main-content {
@@ -34,4 +28,18 @@ body {
 .header,
 .footer {
   margin: 0;
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 768px) {
+  .content {
+    height: inherit;
+  }
+
+  .main-content {
+    min-height: max-content;
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
 }
