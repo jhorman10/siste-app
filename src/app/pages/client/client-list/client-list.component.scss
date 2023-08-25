@@ -1,0 +1,41 @@
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+
+  &__item {
+    min-width: 250px;
+    flex: 0 0 calc(33.33% - 20px);
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    &--highlight {
+      background-color: #f8f8f8;
+    }
+
+    .user-info {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    strong {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+}

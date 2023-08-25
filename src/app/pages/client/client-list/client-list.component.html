@@ -1,0 +1,6 @@
+<ul class="user-list">
+  <li *ngFor="let user of users" class="user-list__item">
+    <strong>{{ user.name }}</strong> - {{ user.email }}
+    <p class="user-info">{{ user.company.name }}</p>
+  </li>
+</ul>

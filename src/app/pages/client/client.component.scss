@@ -1,0 +1,11 @@
+.clients__container{
+  display: grid;
+  place-content: center;
+  width: 80vw;
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+}
