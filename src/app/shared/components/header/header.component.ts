@@ -10,7 +10,7 @@ export class HeaderComponent {
   options = [
     { name: 'Home', url: 'home' },
     { name: 'Client', url: 'client' },
-    // { name: 'Episodes', url: 'episodes' },
+    { name: 'Product', url: 'product' },
     // { name: 'Locations', url: 'locations' },
   ];
   activeOption = '/';
