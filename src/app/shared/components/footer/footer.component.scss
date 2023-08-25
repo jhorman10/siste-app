@@ -2,6 +2,9 @@
   background-color: #333;
   color: white;
   padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 
   // Elementos internos (si los hay)
   &__social-icons {

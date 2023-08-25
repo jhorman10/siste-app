@@ -1,13 +1,14 @@
 <section class="app__container">
   <app-header></app-header>
-
   <div class="content">
-    <!-- <app-side-bar></app-side-bar> -->
     <main class="main-content">
-      <!-- Contenido principal aquí -->
-      <router-outlet></router-outlet>
+      <ng-container *ngIf="isLoading; else content">
+        <app-spinner></app-spinner>
+      </ng-container>
+      <ng-template #content>
+        <router-outlet></router-outlet>
+      </ng-template>
     </main>
   </div>
-
   <app-footer></app-footer>
 </section>
