@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'siste-app';
+  isLoading: boolean = true; // Cambia esto según tu lógica de carga de datos
+
+  // Simula una carga de datos
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000); // Simulando 2 segundos de carga
+  }
 }
