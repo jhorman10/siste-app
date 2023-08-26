@@ -42,6 +42,10 @@
       text-decoration: none;
       color: #978a8a;
 
+      &:hover {
+        text-shadow: 1px 5px 6px rgb(90, 109, 164);
+      }
+
       &.active {
         color: #ffffff;
         text-shadow: 1px 5px 6px rgba(207, 193, 193, 0.574);
