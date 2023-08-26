@@ -1,0 +1,32 @@
+.products__container{
+  position: relative;
+  display: grid;
+  place-content: center;
+  width: 80vw;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .products__container__router{
+    display: flex;
+
+    .products__container__router__sidebar{
+      position: fixed;
+      left: 0;
+      top: 70px;
+      max-width: 150px;
+      background-color: #333;
+      color: #ffffff;
+      height: 100vh;
+    }
+
+    .products__container__router__content{
+      display: grid;
+      place-content: center;
+    }
+  }
+}
