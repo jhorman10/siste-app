@@ -10,35 +10,56 @@
     <input
       class="new-product-form__input"
       type="text"
-      id="nombre"
-      [(ngModel)]="editedProduct.nombre"
-      name="nombre"
+      id="name"
+      [(ngModel)]="editedProduct.name"
+      name="name"
+      minlength="2"
       placeholder="Toy boy"
+      #name="ngModel"
       required
     />
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+      <p class="text-danger" *ngIf="name?.errors?.['required']">
+        Name is required
+      </p>
+      <p class="text-danger" *ngIf="name?.errors?.['minlength']">
+        The name must have a minimum of 2 characters
+      </p>
+    </div>
 
     <label class="new-product-form__label" for="descripcion"
-      >Descripcion:</label
+      >Description:</label
     >
     <textarea
       class="new-product-form__textarea"
       id="descripcion"
-      [(ngModel)]="editedProduct.descripcion"
-      name="descripcion"
+      [(ngModel)]="editedProduct.description"
+      name="description"
       placeholder="a big toy boy"
       required
+      minlength="2"
+      #description="ngModel"
     ></textarea>
+    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+      <p class="text-danger" *ngIf="description?.errors?.['required']">
+        Description is required
+      </p>
+      <p class="text-danger" *ngIf="description?.errors?.['minlength']">
+        The description must have a minimum of 2 characters
+      </p>
+    </div>
 
     <label class="new-product-form__label" for="precio">Price:</label>
     <input
       class="new-product-form__input"
       type="number"
-      id="precio"
-      [(ngModel)]="editedProduct.precio"
-      name="precio"
+      id="price"
+      [(ngModel)]="editedProduct.price"
+      name="price"
       placeholder="10.00"
       required
       min="1"
+      #price="ngModel"
     />
 
     <ng-container *ngIf="editedProduct.id; else content">

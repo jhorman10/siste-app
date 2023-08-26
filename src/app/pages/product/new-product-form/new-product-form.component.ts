@@ -24,23 +24,23 @@ export class NewProductFormComponent implements OnInit {
     this.editedProduct = this.productId
       ? this.productService.getProductById(this.productId) || {
           id: this.productId,
-          nombre: '',
-          descripcion: '',
-          precio: 0,
+          name: '',
+          description: '',
+          price: 1,
         }
       : {
           id: 0,
-          nombre: '',
-          descripcion: '',
-          precio: 0,
+          name: '',
+          description: '',
+          price: 1,
         };
   }
 
   saveProduct() {
     if (
-      this.editedProduct.nombre &&
-      this.editedProduct.descripcion &&
-      this.editedProduct.precio
+      this.editedProduct.name &&
+      this.editedProduct.description &&
+      this.editedProduct.price
     ) {
       if (this.productId) {
         this.productService.updateProduct(this.editedProduct);
@@ -50,9 +50,9 @@ export class NewProductFormComponent implements OnInit {
 
       this.editedProduct = {
         id: 0,
-        nombre: '',
-        descripcion: '',
-        precio: 0,
+        name: '',
+        description: '',
+        price: 0,
       };
 
       this.router.navigate(['/product/list']);
