@@ -5,7 +5,7 @@ import { Product } from '../../../models/product.model';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent {
   products: Product[] = [];
@@ -18,5 +18,4 @@ export class ProductListComponent {
   editProduct(id: number): void {
     this.router.navigate(['/product/edit', id]);
   }
-
 }

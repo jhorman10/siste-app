@@ -21,8 +21,8 @@ import { SharedModule } from './shared/shared.module';
         AppRoutingModule,
         SharedModule,
         ClientModule,
-        ProductModule,
-        HomeModule
+        HomeModule,
+        ProductModule
     ]
 })
 export class AppModule { }
