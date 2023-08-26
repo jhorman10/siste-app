@@ -1,1 +1,15 @@
-<p>product works!</p>
+<section class="products__container">
+  <ng-container *ngIf="isLoading$ | async; else content">
+    <app-spinner></app-spinner>
+  </ng-container>
+  <section class="products__container__router">
+    <div class="products__container__router__sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="products__container__router__content">
+      <ng-template #content>
+        <router-outlet></router-outlet>
+      </ng-template>
+    </div>
+  </section>
+</section>
