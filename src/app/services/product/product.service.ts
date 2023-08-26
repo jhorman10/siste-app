@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 import Swal from 'sweetalert2';
-import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root',
