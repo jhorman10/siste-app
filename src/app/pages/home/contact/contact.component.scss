@@ -26,6 +26,7 @@
   .contact__social-link__img {
     height: 140px;
     width: 150px;
+    border-radius: 20px;
   }
 
   @media screen and (max-width: 768px) {
@@ -51,7 +52,7 @@
 
     .contact__social-link__img {
       height: 100px;
-      width: 110px;
+      width: 100px;
     }
   }
 }
