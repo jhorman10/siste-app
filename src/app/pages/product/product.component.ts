@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { SpinnerService } from './../../services/spinner.service';
+import { ProductService } from 'src/app/services/product/product.service';
+import { SpinnerService } from 'src/app/services/spinner/spinner.service';
+
 
 @Component({
   selector: 'app-product',

@@ -12,7 +12,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import { NewProductFormComponent } from '../pages/product/new-product-form/new-product-form.component';
 import { ProductListComponent } from '../pages/product/product-list/product-list.component';
 import { ProductComponent } from '../pages/product/product.component';
-import { ProductService } from '../services/product.service';
+import { ProductService } from '../services/product/product.service';
 
 @Injectable({ providedIn: 'root' })
 export class ProductResolver {
