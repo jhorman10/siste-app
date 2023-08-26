@@ -1,9 +1,9 @@
 <ul class="products">
   <li *ngFor="let product of products" class="products__item">
-    <h2 class="products__item__name">{{ product.nombre }}</h2>
-    <p class="products__item__description">{{ product.descripcion }}</p>
+    <h2 class="products__item__name">{{ product.name }}</h2>
+    <p class="products__item__description">{{ product.description }}</p>
     <p class="products__item__price">
-      {{ product.precio.toFixed(2) | currency }}
+      {{ product.price | currency }}
     </p>
     <button
       class="products__item__edit-button"

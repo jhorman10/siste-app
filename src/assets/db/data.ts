@@ -1,62 +1,62 @@
 [
   {
     "id": 1,
-    "nombre": "Camiseta",
-    "descripcion": "Camiseta de algodón suave y cómoda.",
-    "precio": 19.99
+    "name": "Camiseta",
+    "description": "Camiseta de algodón suave y cómoda.",
+    "price": 19.99
   },
   {
     "id": 2,
-    "nombre": "Pantalón vaquero",
-    "descripcion": "Pantalón vaquero de estilo clásico.",
-    "precio": 39.99
+    "name": "Pantalón vaquero",
+    "description": "Pantalón vaquero de estilo clásico.",
+    "price": 39.99
   },
   {
     "id": 3,
-    "nombre": "Zapatillas deportivas",
-    "descripcion": "Zapatillas deportivas con suela amortiguada.",
-    "precio": 59.99
+    "name": "Zapatillas deportivas",
+    "description": "Zapatillas deportivas con suela amortiguada.",
+    "price": 59.99
   },
   {
     "id": 4,
-    "nombre": "Reloj de pulsera",
-    "descripcion": "Reloj de pulsera elegante y resistente al agua.",
-    "precio": 89.99
+    "name": "Reloj de pulsera",
+    "description": "Reloj de pulsera elegante y resistente al agua.",
+    "price": 89.99
   },
   {
     "id": 5,
-    "nombre": "Bolso de mano",
-    "descripcion": "Bolso de mano espacioso y elegante.",
-    "precio": 49.99
+    "name": "Bolso de mano",
+    "description": "Bolso de mano espacioso y elegante.",
+    "price": 49.99
   },
   {
     "id": 6,
-    "nombre": "Gafas de sol",
-    "descripcion": "Gafas de sol con protección UV y montura moderna.",
-    "precio": 29.99
+    "name": "Gafas de sol",
+    "description": "Gafas de sol con protección UV y montura moderna.",
+    "price": 29.99
   },
   {
     "id": 7,
-    "nombre": "Chaqueta de cuero",
-    "descripcion": "Chaqueta de cuero genuino con forro interior.",
-    "precio": 129.99
+    "name": "Chaqueta de cuero",
+    "description": "Chaqueta de cuero genuino con forro interior.",
+    "price": 129.99
   },
   {
     "id": 8,
-    "nombre": "Bicicleta urbana",
-    "descripcion": "Bicicleta urbana de diseño moderno y cómoda para la ciudad.",
-    "precio": 299.99
+    "name": "Bicicleta urbana",
+    "description": "Bicicleta urbana de diseño moderno y cómoda para la ciudad.",
+    "price": 299.99
   },
   {
     "id": 9,
-    "nombre": "Cartera de piel",
-    "descripcion": "Cartera de piel con múltiples compartimentos.",
-    "precio": 39.99
+    "name": "Cartera de piel",
+    "description": "Cartera de piel con múltiples compartimentos.",
+    "price": 39.99
   },
   {
     "id": 10,
-    "nombre": "Portátil ultraligero",
-    "descripcion": "Portátil ultraligero con procesador potente y pantalla Full HD.",
-    "precio": 799.99
+    "name": "Portátil ultraligero",
+    "description": "Portátil ultraligero con procesador potente y pantalla Full HD.",
+    "price": 799.99
   }
 ]
