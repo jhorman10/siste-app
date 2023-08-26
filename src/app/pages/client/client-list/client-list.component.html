@@ -2,5 +2,6 @@
   <li *ngFor="let user of users" class="user-list__item">
     <strong>{{ user.name }}</strong> - {{ user.email }}
     <p class="user-info">{{ user.company.name }}</p>
+    <button class="user-list__item__see-button" type="button" (click)="onCardClick(user)">See more</button>
   </li>
 </ul>

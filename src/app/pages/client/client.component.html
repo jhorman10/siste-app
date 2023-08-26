@@ -4,6 +4,9 @@
   </ng-container>
   <ng-template #content>
     <h1 class="clients__container__title">Client List:</h1>
-    <app-client-list></app-client-list>
+    <app-client-list
+      [users]="users"
+      (showClientDetails)="showClientDetails($event)"
+    ></app-client-list>
   </ng-template>
 </section>

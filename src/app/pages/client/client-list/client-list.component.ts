@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { User } from '../../../models/user.model';
-import { ClientService } from '../../../services/client.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-client-list',
@@ -8,13 +7,13 @@ import { ClientService } from '../../../services/client.service';
   styleUrls: ['./client-list.component.scss'],
 })
 export class ClientListComponent {
-  users: User[] = [];
+  @Input()
+  users!: User[];
 
-  constructor(private clientService: ClientService) {}
+  @Output()
+  showClientDetails = new EventEmitter<User>();
 
-  ngOnInit(): void {
-    this.clientService.getAllUsers().subscribe((data: User[]) => {
-      this.users = data;
-    });
+  onCardClick(user: User): void {
+    this.showClientDetails.emit(user);
   }
 }
