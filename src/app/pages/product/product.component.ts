@@ -11,8 +11,8 @@ import { SpinnerService } from 'src/app/services/spinner/spinner.service';
 export class ProductComponent {
 
   constructor(
-    private productService: ProductService,
-    private spinnerService: SpinnerService
+    public productService: ProductService,
+    public spinnerService: SpinnerService
   ) {}
   isLoading$ = this.spinnerService.isLoading$;
 

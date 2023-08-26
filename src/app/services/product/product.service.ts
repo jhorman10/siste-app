@@ -7,9 +7,9 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class ProductService {
-  private localStorageKey = 'products';
+  public localStorageKey = 'products';
 
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   saveProductsIfEmpty(): void {
     const storedProducts = localStorage.getItem(this.localStorageKey);
@@ -71,7 +71,7 @@ export class ProductService {
     }
   }
 
-  private loadProductsFromJson() {
+  public loadProductsFromJson() {
     return this.http.get<Product[]>('../../assets/db/data.ts');
   }
 }
