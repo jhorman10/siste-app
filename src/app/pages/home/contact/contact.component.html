@@ -1,0 +1,13 @@
+<section class="contact">
+  <h2>Contact Me</h2>
+  <div class="contact__social-links">
+    <a
+      *ngFor="let link of socialLinks"
+      [href]="link.url"
+      target="_blank"
+      class="contact__social-link"
+    >
+      <img class="contact__social-link__img" src="{{link.icon}}" alt="{{link.icon}}">
+    </a>
+  </div>
+</section>
