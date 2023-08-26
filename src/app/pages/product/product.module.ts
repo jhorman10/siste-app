@@ -18,7 +18,7 @@ import { ProductComponent } from './product.component';
 
 @Injectable({ providedIn: 'root' })
 export class ProductResolver {
-  constructor(private productService: ProductService) {}
+  constructor(public productService: ProductService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,

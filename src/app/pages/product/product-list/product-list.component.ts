@@ -10,7 +10,7 @@ import { Product } from '../../../models/product.model';
 export class ProductListComponent {
   products: Product[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(public route: ActivatedRoute, public router: Router) {}
   ngOnInit(): void {
     this.products = this.route.snapshot.data['products'];
   }
