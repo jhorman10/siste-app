@@ -10,7 +10,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class ClientService {
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   getAllUsers(): Observable<User[]>{
    return this.http.get<User[]>(`${URL_USERS}`);

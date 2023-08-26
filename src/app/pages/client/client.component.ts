@@ -13,8 +13,8 @@ export class ClientComponent {
   users: User[] = [];
 
   constructor(
-    private spinnerService: SpinnerService,
-    private clientService: ClientService
+    public spinnerService: SpinnerService,
+    public clientService: ClientService
   ) {}
   isLoading$ = this.spinnerService.isLoading$;
 
