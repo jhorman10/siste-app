@@ -11,7 +11,6 @@ export class HeaderComponent {
     { name: 'Home', url: 'home' },
     { name: 'Client', url: 'client' },
     { name: 'Product', url: 'product' },
-    // { name: 'Locations', url: 'locations' },
   ];
   activeOption = '/';
 

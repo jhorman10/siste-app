@@ -1,5 +1,5 @@
 <section class="clients__container">
-  <ng-container *ngIf="(isLoading$ | async); else content">
+  <ng-container *ngIf="isLoading$ | async; else content">
     <app-spinner></app-spinner>
   </ng-container>
   <ng-template #content>
