@@ -1,0 +1,16 @@
+<ul class="products">
+  <li *ngFor="let product of products" class="products__item">
+    <h2 class="products__item__name">{{ product.nombre }}</h2>
+    <p class="products__item__description">{{ product.descripcion }}</p>
+    <p class="products__item__price">
+      {{ product.precio.toFixed(2) | currency }}
+    </p>
+    <button
+      class="products__item__edit-button"
+      type="button"
+      (click)="editProduct(product.id)"
+    >
+      Edit
+    </button>
+  </li>
+</ul>

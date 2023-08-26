@@ -1,0 +1,11 @@
+<ul class="group-list">
+  <li *ngFor="let option of options" class="group-list-item">
+    <a
+      class="group-list-item-a"
+      [routerLink]="['/' + option.url]"
+      routerLinkActive="active"
+    >
+      {{ option.name }}
+    </a>
+  </li>
+</ul>

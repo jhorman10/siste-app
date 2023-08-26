@@ -1,1 +1,55 @@
-<p>new-product-form works!</p>
+<div class="new-product-form">
+  <ng-container *ngIf="editedProduct.id; else title">
+    <h2 class="new-product-form__title">Update Product</h2>
+  </ng-container>
+  <ng-template #title>
+    <h2 class="new-product-form__title">Add New Product</h2>
+  </ng-template>
+  <form (ngSubmit)="saveProduct()">
+    <label class="new-product-form__label" for="nombre">Name:</label>
+    <input
+      class="new-product-form__input"
+      type="text"
+      id="nombre"
+      [(ngModel)]="editedProduct.nombre"
+      name="nombre"
+      placeholder="Toy boy"
+      required
+    />
+
+    <label class="new-product-form__label" for="descripcion"
+      >Descripcion:</label
+    >
+    <textarea
+      class="new-product-form__textarea"
+      id="descripcion"
+      [(ngModel)]="editedProduct.descripcion"
+      name="descripcion"
+      placeholder="a big toy boy"
+      required
+    ></textarea>
+
+    <label class="new-product-form__label" for="precio">Price:</label>
+    <input
+      class="new-product-form__input"
+      type="number"
+      id="precio"
+      [(ngModel)]="editedProduct.precio"
+      name="precio"
+      placeholder="10.00"
+      required
+      min="1"
+    />
+
+    <ng-container *ngIf="editedProduct.id; else content">
+      <button class="new-product-form__submit-button" type="submit">
+        Update Product
+      </button>
+    </ng-container>
+    <ng-template #content>
+      <button class="new-product-form__submit-button" type="submit">
+        Save Product
+      </button>
+    </ng-template>
+  </form>
+</div>
