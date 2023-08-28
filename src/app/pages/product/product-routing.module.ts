@@ -29,13 +29,13 @@ const routes: Routes = [
     path: '',
     component: ProductComponent,
     children: [
-      { path: '', redirectTo: 'list', pathMatch: 'full' },
+      { path: '', redirectTo: 'add', pathMatch: 'full' },
+      { path: 'add', component: NewProductFormComponent },
       {
         path: 'list',
         component: ProductListComponent,
         resolve: { products: ProductResolver },
       },
-      { path: 'add', component: NewProductFormComponent },
       { path: 'edit/:id', component: NewProductFormComponent },
     ],
   },
