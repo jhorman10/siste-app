@@ -20,8 +20,8 @@
 
   &__item {
     position: relative;
-    min-width: 250px;
-    min-height: 140px;
+    min-width: 270px;
+    min-height: 180px;
     width: calc(33.33% - 20px);
     padding: 20px;
     background-color: white;
@@ -55,6 +55,35 @@
       font-size: 1.1rem;
       font-weight: bold;
       margin-top: 10px;
+    }
+
+    &__buttons-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    &__delete-button {
+      position: absolute;
+      right: 85px;
+      bottom: 10px;
+      background-color: #6f2828;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #b92929;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(219, 52, 52, 0.8);
+      }
     }
 
     &__edit-button {
