@@ -5,12 +5,21 @@
     <p class="products__item__price">
       {{ product.price | currency }}
     </p>
-    <button
-      class="products__item__edit-button"
-      type="button"
-      (click)="editProduct(product.id)"
-    >
-      Edit
-    </button>
+    <div class="products__item__buttons-container">
+      <button
+        class="products__item__delete-button"
+        type="button"
+        (click)="deleteProduct(product.id)"
+      >
+        Delete
+      </button>
+      <button
+        class="products__item__edit-button"
+        type="button"
+        (click)="editProduct(product.id)"
+      >
+        Edit
+      </button>
+    </div>
   </li>
 </ul>

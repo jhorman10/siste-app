@@ -188,4 +188,26 @@ describe('ProductService', () => {
     );
     expect(Swal.fire).toHaveBeenCalled();
   }));
+
+  it('should delete a product', fakeAsync(() => {
+    spyOn(localStorage, 'setItem');
+    spyOn(Swal, 'fire');
+
+    const existingProduct: Product = {
+      id: 1,
+      name: 'Camiseta',
+      description: 'Camiseta de algodón suave y cómoda.',
+      price: 19.99,
+    };
+    localStorage.setItem('products', JSON.stringify([existingProduct]));
+
+    service.deleteProductById(existingProduct.id);
+
+    tick(1500);
+
+    const updatedProducts = JSON.parse(localStorage.getItem('products') || '[]');
+    expect(updatedProducts.length).toBe(0);
+    expect(Swal.fire).toHaveBeenCalled();
+    expect(localStorage.setItem).toHaveBeenCalledWith('products', jasmine.any(String));
+  }));
 });
