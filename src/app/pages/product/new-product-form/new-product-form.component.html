@@ -40,7 +40,11 @@
       minlength="2"
       #description="ngModel"
     ></textarea>
-    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+    <div
+      *ngIf="
+        description?.invalid && (description?.dirty || description?.touched)
+      "
+    >
       <p class="text-danger" *ngIf="description?.errors?.['required']">
         Description is required
       </p>
@@ -61,16 +65,17 @@
       min="1"
       #price="ngModel"
     />
-
-    <ng-container *ngIf="editedProduct.id; else content">
-      <button class="new-product-form__submit-button" type="submit">
-        Update Product
-      </button>
-    </ng-container>
-    <ng-template #content>
-      <button class="new-product-form__submit-button" type="submit">
-        Save Product
-      </button>
-    </ng-template>
+    <div class="new-product-form__container__submit-button">
+      <ng-container *ngIf="editedProduct.id; else content">
+        <button class="new-product-form__submit-button" type="submit">
+          Update Product
+        </button>
+      </ng-container>
+      <ng-template #content>
+        <button class="new-product-form__submit-button" type="submit">
+          Save Product
+        </button>
+      </ng-template>
+    </div>
   </form>
 </div>
