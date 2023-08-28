@@ -8,6 +8,12 @@
   align-items: center;
   list-style: none;
 
+  @media screen and (max-width: 768px) {
+    max-height: 700px;
+    overflow-y: auto;
+    gap: 20px;
+  }
+
   &__item {
     position: relative;
     min-width: 250px;
