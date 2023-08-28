@@ -23,8 +23,17 @@
     font-size: 1rem;
   }
 
+  &__container__submit-button{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 15px;
+  }
+
   &__submit-button {
-    background-color: #3498db;
+    background-color: #2e5671;
     color: white;
     border: none;
     border-radius: 5px;
