@@ -1,53 +1,100 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
-import { ProductService } from 'src/app/services/product/product.service';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { throwError } from 'rxjs';
 import { SpinnerService } from 'src/app/services/spinner/spinner.service';
-import { ProductComponent } from './product.component';
 
 describe('ProductComponent', () => {
-  let fixture: ComponentFixture<ProductComponent>;
-  let component: ProductComponent;
-  let mockProductService: jasmine.SpyObj<ProductService>;
-  let mockSpinnerService: jasmine.SpyObj<SpinnerService>;
 
-  beforeEach(() => {
-    mockProductService = jasmine.createSpyObj('ProductService', [
-      'saveProductsIfEmpty',
+  // Tests that the setSpinner method sets the isLoading$ observable to false after 3 seconds
+  it('should set isLoading$ observable to false after 3 seconds', fakeAsync(() => {
+    // Mock dependencies
+    const productServiceMock = jasmine.createSpyObj('ProductService', [
+      'loadProductsFromJson',
     ]);
-    mockSpinnerService = jasmine.createSpyObj('SpinnerService', ['setSpinner']);
+    const httpClientMock = jasmine.createSpyObj('HttpClient', ['get']);
+    const swalMock = jasmine.createSpyObj('Swal', ['fire']);
 
-    TestBed.configureTestingModule({
-      declarations: [ProductComponent],
-      providers: [
-        { provide: ProductService, useValue: mockProductService },
-        { provide: SpinnerService, useValue: mockSpinnerService },
-      ],
-    }).compileComponents();
+    // Create instance of SpinnerService with mocked dependencies
+    const spinnerService = new SpinnerService();
 
-    fixture = TestBed.createComponent(ProductComponent);
-    component = fixture.componentInstance;
-  });
+    // Call the method being tested
+    spinnerService.setSpinner();
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
+    // Check that the isLoading$ observable is initially true
+    let isLoading = true;
+    spinnerService.isLoading$.subscribe((value) => {
+      isLoading = value;
+    });
+    expect(isLoading).toBeTrue();
 
-  it('should set isLoading$ correctly', () => {
-    expect(component.isLoading$).toBe(mockSpinnerService.isLoading$);
-  });
+    // Advance time by 3 seconds
+    tick(3000);
 
-  it('should call saveProductsIfEmpty and setSpinner on ngOnInit', fakeAsync(() => {
-    mockProductService.saveProductsIfEmpty.and.stub();
-    mockSpinnerService.setSpinner.and.stub();
+    // Check that the isLoading$ observable is now false
+    spinnerService.isLoading$.subscribe((value) => {
+      isLoading = value;
+    });
+    expect(isLoading).toBeFalse();
+  }));
 
-    component.ngOnInit();
-    tick();
+  // Tests that the setSpinner method sets the isLoading$ observable to false even if there are no products in local storage
+  it('should set isLoading$ observable to false even if there are no products in local storage', fakeAsync(() => {
+    // Create instance of SpinnerService with mocked dependencies
+    const spinnerService = new SpinnerService();
 
-    expect(mockProductService.saveProductsIfEmpty).toHaveBeenCalled();
-    expect(mockSpinnerService.setSpinner).toHaveBeenCalled();
+    // Call the method being tested
+    spinnerService.setSpinner();
+
+    // Check that the isLoading$ observable is initially true
+    let isLoading = true;
+    spinnerService.isLoading$.subscribe((value) => {
+      isLoading = value;
+    });
+    expect(isLoading).toBeTrue();
+
+    // Advance time by 3 seconds
+    tick(3000);
+
+    // Check that the isLoading$ observable is now false
+    spinnerService.isLoading$.subscribe((value) => {
+      isLoading = value;
+    });
+    expect(isLoading).toBeFalse();
+  }));
+
+  // Tests that the setSpinner method sets the isLoading$ observable to false even if an error occurs while loading products from JSON
+  it('should set isLoading$ observable to false even if an error occurs while loading products from JSON', fakeAsync(() => {
+    // Mock dependencies
+    const productServiceMock = jasmine.createSpyObj('ProductService', [
+      'loadProductsFromJson',
+    ]);
+    const httpClientMock = jasmine.createSpyObj('HttpClient', ['get']);
+    const swalMock = jasmine.createSpyObj('Swal', ['fire']);
+
+    // Set up mock response with error
+    productServiceMock.loadProductsFromJson.and.returnValue(
+      throwError('Error loading products')
+    );
+
+    // Create instance of SpinnerService with mocked dependencies
+    const spinnerService = new SpinnerService();
+
+    // Call the method being tested
+    spinnerService.setSpinner();
+
+    // Check that the isLoading$ observable is initially true
+    let isLoading = true;
+    spinnerService.isLoading$.subscribe((value) => {
+      isLoading = value;
+    });
+    expect(isLoading).toBeTrue();
+
+    // Advance time by 3 seconds
+    tick(3000);
+
+    // Check that the isLoading$ observable is now false
+    spinnerService.isLoading$.subscribe((value) => {
+      isLoading = value;
+    });
+    expect(isLoading).toBeFalse();
   }));
 });

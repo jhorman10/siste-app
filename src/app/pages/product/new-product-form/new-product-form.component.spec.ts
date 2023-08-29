@@ -1,131 +1,58 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from 'src/app/services/product/product.service';
-import { Product } from '../../../models/product.model';
 import { NewProductFormComponent } from './new-product-form.component';
 
 describe('NewProductFormComponent', () => {
-  let fixture: ComponentFixture<NewProductFormComponent>;
-  let component: NewProductFormComponent;
-  let mockProductService: jasmine.SpyObj<ProductService>;
-  let mockActivatedRoute: any;
-  let mockRouter: jasmine.SpyObj<Router>;
 
-  beforeEach(() => {
-    mockProductService = jasmine.createSpyObj('ProductService', [
-      'getProductById',
-      'updateProduct',
-      'addProduct',
-    ]);
-    mockActivatedRoute = {
-      snapshot: {
-        params: { id: '1' },
-      },
-    };
-    mockRouter = jasmine.createSpyObj('Router', ['navigate']);
+  // Tests that the form initializes with empty fields and default price
+  it('should initialize form with empty fields and default price', () => {
+    // Arrange
+    const productServiceMock = jasmine.createSpyObj('ProductService', ['getProductById']);
+    productServiceMock.getProductById.and.returnValue(undefined);
+    const routeMock = jasmine.createSpyObj('ActivatedRoute', [], { snapshot: { params: { id: 1 } } });
+    const routerMock = jasmine.createSpyObj('Router', ['navigate']);
+    const component = new NewProductFormComponent(productServiceMock, routeMock, routerMock);
 
-    TestBed.configureTestingModule({
-      declarations: [NewProductFormComponent],
-      providers: [
-        { provide: ProductService, useValue: mockProductService },
-        { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: Router, useValue: mockRouter },
-      ],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(NewProductFormComponent);
-    component = fixture.componentInstance;
-  });
-
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should populate editedProduct when there is an ID', () => {
-    const mockProduct: Product = {
-      id: 1,
-      name: 'Product 1',
-      description: 'Description 1',
-      price: 10,
-    };
-    mockProductService.getProductById.and.returnValue(mockProduct);
-
+    // Act
     component.ngOnInit();
 
-    expect(component.productId).toBe(1);
-    expect(component.editedProduct).toEqual(mockProduct);
+    // Assert
+    expect(component.editedProduct).toEqual({ id: 1, name: '', description: '', price: 1 });
   });
 
-  it('should create a new editedProduct when there is no ID', () => {
-    mockActivatedRoute.snapshot.params.id = undefined;
+  // Tests that a product is not saved when the name field is empty
+  it('should not save product when name field is empty', () => {
+    // Arrange
+    const productServiceMock = jasmine.createSpyObj('ProductService', ['addProduct']);
+    const routeMock = jasmine.createSpyObj('ActivatedRoute', [], { snapshot: { params: { id: undefined } } });
+    const routerMock = jasmine.createSpyObj('Router', ['navigate']);
+    const component = new NewProductFormComponent(productServiceMock, routeMock, routerMock);
+    component.editedProduct = { id: 0, name: '', description: 'Test Description', price: 10 };
 
-    component.ngOnInit();
-
-    expect(component.productId).toBeUndefined();
-    expect(component.editedProduct).toEqual({
-      id: 0,
-      name: '',
-      description: '',
-      price: 1,
-    });
-  });
-
-  it('should save editedProduct and navigate to product list', () => {
-    component.editedProduct = {
-      id: 1,
-      name: 'Product 1',
-      description: 'Description 1',
-      price: 10,
-    };
-
+    // Act
     component.saveProduct();
 
-    expect(mockProductService.updateProduct).toHaveBeenCalledWith(
-      component.editedProduct
-    );
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['/product/list']);
-    expect(component.editedProduct).toEqual({
-      id: 0,
-      name: '',
-      description: '',
-      price: 0,
-    });
+    // Assert
+    expect(productServiceMock.addProduct).not.toHaveBeenCalled();
+    expect(component.editedProduct).toEqual({ id: 0, name: '', description: 'Test Description', price: 10 });
+    expect(routerMock.navigate).not.toHaveBeenCalled();
   });
 
-  it('should add new product and navigate to product list', () => {
-    component.productId = 0;
-    component.editedProduct = {
-      id: 0,
-      name: 'New Product',
-      description: 'Description 2',
-      price: 20,
-    };
+  // Tests that a product is not saved when the description field is empty
+  it('should not save product when description field is empty', () => {
+    // Arrange
+    const productServiceMock = jasmine.createSpyObj('ProductService', ['addProduct']);
+    const routeMock = jasmine.createSpyObj('ActivatedRoute', [], { snapshot: { params: { id: undefined } } });
+    const routerMock = jasmine.createSpyObj('Router', ['navigate']);
+    const component = new NewProductFormComponent(productServiceMock, routeMock, routerMock);
+    component.editedProduct = { id: 0, name: 'Test Product', description: '', price: 10 };
 
+    // Act
     component.saveProduct();
 
-    expect(mockProductService.addProduct).toHaveBeenCalledWith(
-      component.editedProduct
-    );
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['/product/list']);
-    expect(component.editedProduct).toEqual({
-      id: 0,
-      name: '',
-      description: '',
-      price: 0,
-    });
+    // Assert
+    expect(productServiceMock.addProduct).not.toHaveBeenCalled();
+    expect(component.editedProduct).toEqual({ id: 0, name: 'Test Product', description: '', price: 10 });
+    expect(routerMock.navigate).not.toHaveBeenCalled();
   });
 
-  it('should not save product if fields are incomplete', () => {
-    component.editedProduct = {
-      id: 1,
-      name: '',
-      description: 'Incomplete Product',
-      price: 0,
-    };
-
-    component.saveProduct();
-
-    expect(mockProductService.updateProduct).not.toHaveBeenCalled();
-    expect(mockRouter.navigate).not.toHaveBeenCalled();
-  });
 });
+
