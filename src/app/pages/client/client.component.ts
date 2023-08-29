@@ -27,13 +27,17 @@ export class ClientComponent {
 
   showClientDetails(user: User): void {
     const userDetails = `
-      Name: ${user.name}
-      Username: ${user.username}
-      Email: ${user.email}
-      Address: ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}
-      Phone: ${user.phone}
-      Website: ${user.website}
-      Company: ${user.company.name}, ${user.company.catchPhrase}, ${user.company.bs}
+    <div class="user-details">
+      <ul class="user-details__list">
+        <li class="user-details__item"><strong class="user-details__label">Name:</strong> ${ user.name }</li>
+        <li class="user-details__item"><strong class="user-details__label">Username:</strong> ${ user.username }</li>
+        <li class="user-details__item"><strong class="user-details__label">Email:</strong> ${ user.email }</li>
+        <li class="user-details__item"><strong class="user-details__label">Address:</strong> ${ user.address.street }, ${ user.address.suite }, ${ user.address.city }, ${ user.address.zipcode }</li>
+        <li class="user-details__item"><strong class="user-details__label">Phone:</strong> ${ user.phone }</li>
+        <li class="user-details__item"><strong class="user-details__label">Website:</strong> ${ user.website }</li>
+        <li class="user-details__item"><strong class="user-details__label">Company:</strong> ${ user.company.name }, ${ user.company.catchPhrase }, ${ user.company.bs }</li>
+      </ul>
+    </div>
     `;
 
     Swal.fire({
@@ -42,11 +46,9 @@ export class ClientComponent {
       icon: 'info',
       showCloseButton: true,
       customClass: {
-        container: 'custom-swal-container',
-        title: 'custom-swal-title',
-        htmlContainer: 'custom-swal-html-container',
+        container: 'user-details-swal',
+        htmlContainer: 'user-details__list-swal',
       },
     });
   }
-
 }
