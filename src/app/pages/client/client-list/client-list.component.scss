@@ -18,9 +18,14 @@
 
   &__item {
     position: relative;
-    min-width: 270px;
-    min-height: 160px;
-    flex: 0 0 calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 250px;
+    height: 180px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
