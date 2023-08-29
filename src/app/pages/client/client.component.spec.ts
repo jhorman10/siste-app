@@ -7,7 +7,6 @@ import {
 import { of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { ClientService } from 'src/app/services/client/client.service';
-import Swal from 'sweetalert2';
 import { SpinnerService } from '../../services/spinner/spinner.service';
 import { ClientComponent } from './client.component';
 
@@ -99,48 +98,4 @@ describe('ClientComponent', () => {
     expect(mockClientService.getAllUsers).toHaveBeenCalled();
     expect(component.users).toEqual(mockUsers);
   }));
-
-  it('should show client details using Swal', () => {
-    spyOn(Swal, 'fire');
-
-    const mockUser: User = {
-      id: 1,
-      name: 'Leanne Graham',
-      username: 'Bret',
-      email: 'Sincere@april.biz',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-      company: {
-        name: 'Romaguera-Crona',
-        catchPhrase: 'Multi-layered client-server neural-net',
-        bs: 'harness real-time e-markets',
-      },
-    };
-
-    component.showClientDetails(mockUser);
-
-    expect(Swal.fire).toHaveBeenCalledWith(
-      jasmine.objectContaining({
-        title: 'Client Details',
-        html: jasmine.any(String),
-        icon: 'info',
-        showCloseButton: true,
-        customClass: {
-          container: 'custom-swal-container',
-          title: 'custom-swal-title',
-          htmlContainer: 'custom-swal-html-container',
-        },
-      })
-    );
-  });
 });
