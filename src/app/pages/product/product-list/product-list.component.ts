@@ -11,7 +11,7 @@ import { ProductService } from '../../../services/product/product.service';
 })
 export class ProductListComponent {
   products: Product[] = [];
-  private productDeletedSubscription!: Subscription;
+  public productDeletedSubscription!: Subscription;
 
   constructor(
     public route: ActivatedRoute,

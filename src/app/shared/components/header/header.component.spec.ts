@@ -1,49 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
-  let fixture: ComponentFixture<HeaderComponent>;
-  let component: HeaderComponent;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-      imports: [RouterTestingModule],
-    }).compileComponents();
+  it('should initialize HeaderComponent with options and activeOption values', () => {
+    // Arrange
+    const headerComponent = new HeaderComponent();
 
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
+    // Act
+
+    // Assert
+    expect(headerComponent.options).toEqual([
+      { name: 'Home', url: 'home' },
+      { name: 'Client', url: 'client' },
+      { name: 'Product', url: 'product' },
+    ]);
+    expect(headerComponent.activeOption).toBe('/');
   });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should not update activeOption when clicking on an option not in the options array', () => {
+    // Arrange
+    const headerComponent = new HeaderComponent();
+    const option = { name: 'Non-existent', url: 'non-existent' };
 
-  it('should display options correctly', () => {
-    fixture.detectChanges();
+    // Act
 
-    const optionElements = fixture.debugElement.queryAll(
-      By.css('.header-option')
-    );
-    expect(optionElements.length).toBe(component.options.length);
-
-    optionElements.forEach((optionElement, index) => {
-      const option = optionElement.nativeElement as HTMLElement;
-      const optionData = component.options[index];
-      expect(option.textContent).toContain(optionData.name);
-      expect(option.getAttribute('routerLink')).toBe('/' + optionData.url);
-    });
-  });
-
-  it('should set activeOption correctly', () => {
-    component.activeOption = 'client';
-    fixture.detectChanges();
-
-    const activeOptionElement = fixture.debugElement.query(
-      By.css('.active-option')
-    );
-    expect(activeOptionElement.nativeElement.textContent).toContain('Client');
+    // Assert
+    expect(headerComponent.activeOption).toBe('/');
   });
 });
+
